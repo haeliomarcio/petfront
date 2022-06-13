@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetFront</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <h3>Categorias</h3>
+        <div class="row">
+            <div class="col-md-11">
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Novo
+                </button>
+            </div>
+        </div>
+        
+        <form>
+            <div class="row">
+                <div class="col-md-10">
+                    <input type="hidden" id="codigo" value="" />
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            name="nome" 
+                            id="nome" 
+                            placeholder="Nome da Categoria"
+                        />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="salvarCategoria" class="btn btn-primary">Salvar</button>        
+                </div>
+            </div>
+        </form>
+        
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_categorias">
+            </tbody>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Categoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                name="nome" 
+                                id="nome" 
+                                placeholder="Nome da Categoria"
+                            />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" id="salvarCategoria" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function listar(){
+            fetch('http://localhost:3000/categorias')
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(json){
+                const table_categorias = document.getElementById('tbody_categorias');
+                table_categorias.innerHTML = "";
+                json.forEach(function(item){
+                    let colunaId = "<td>"+item.id+"</td>";
+                    let colunaName = "<td>"+item.nome+"</td>";
+                    let btnEdit = "<button onClick='editar("+item.id+")'  class='btn btn-primary'>Editar</button> ";
+                    let btnDelete = "<button onClick='deletar("+item.id+")' class='btn btn-danger'>Deletar</button>";
+                    let colunaAcoes = "<td>"+btnEdit+btnDelete+"</td>";
+                    let linha = "<tr>"+colunaId+colunaName+colunaAcoes+"</tr>";
+                    table_categorias.innerHTML = table_categorias.innerHTML + linha;
+                });
+            })
+            .catch(function(error){
+                console.error(error);
+            });
+        }
+        listar();
+        $("#salvarCategoria").click(function(){
+            const campoNomeCategoria = $("#nome");
+            const campoCodigo = $("#codigo");
+
+            
+            if(campoNomeCategoria.val() === "") {
+                alert("Campo Nome Obrigatório");
+                return false;
+            }
+            const data = {
+                "nome": campoNomeCategoria.val()
+            };
+
+            if(campoCodigo.val() === "") {
+                fetch("http://localhost:3000/categorias", {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function(response){
+                    return response.json();
+                })
+                .then(function(json){
+                    console.log(json); 
+                    $("#codigo").val("");
+                    $("#nome").val("");
+                    listar(); 
+                })
+                .catch(function(error){
+                    console.error(error);
+                });
+            } else {
+                fetch("http://localhost:3000/categorias/"+campoCodigo.val(), {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function(response){
+                    return response.json();
+                })
+                .then(function(json){
+                    console.log(json); 
+                    $("#codigo").val("");
+                    $("#nome").val("");
+                    listar(); 
+                })
+                .catch(function(error){
+                    console.error(error);
+                });
+            }
+            
+        });
+        
+        function editar(id){
+            fetch("http://localhost:3000/categorias/"+id, {
+                method: "GET",
+            })
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(json){
+                $("#codigo").val(json.id);
+                $("#nome").val(json.nome);
+            })
+            .catch(function(error){
+                console.error(error);
+            })
+        }
+
+        function deletar(id){
+            fetch("http://localhost:3000/categorias/"+id, {
+                method: "DELETE",
+            })
+            .then(function(response){
+                listar();
+            })
+            .catch(function(error){
+                console.error(error);
+            })
+        }
+        
+        // GET    /posts
+        // GET    /posts/1
+        // POST   /posts
+        // PUT    /posts/1
+        // PATCH  /posts/1
+        // DELETE /posts/1
+    </script>
+</body>
+</html>
