@@ -20,5 +20,40 @@
       "nome": "Teste 444 2e211",
       "id": 5
     }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "teste",
+      "email": "teste@teste.com.br",
+      "senha": "123456"
+    },
+    {
+      "id": 2
+    },
+    {
+      "nome": "Teste",
+      "email": "teste@teste",
+      "senha": "123",
+      "id": 3
+    },
+    {
+      "nome": "Tete",
+      "email": "teste@teste",
+      "senha": "123",
+      "id": 4
+    },
+    {
+      "nome": "Jose",
+      "email": "jose@jose",
+      "senha": "123",
+      "id": 5
+    },
+    {
+      "nome": "Maria",
+      "email": "maria@maria",
+      "senha": "123",
+      "id": 6
+    }
   ]
 }
