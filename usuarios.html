@@ -7,10 +7,11 @@
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
-<body>
+<body class="body">
 
     <h3>Usuários</h3>
     <form id="form_usuario">
+        <input type="hidden" id="id" name="id" value="" />
         <div class="m-3">
             <label class="form-label">Nome</label>
             <input type="text" name="nome" id="nome" class="form-control"/>
@@ -34,6 +35,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>E-mail</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +51,7 @@
         // }
         // $(document).ready();
         $(document).ready(function(){
+            
 
             function listarUsuarios(){
                $.ajax({
@@ -62,39 +65,107 @@
                             conteudo += "<td>"+item.id+"</td>";
                             conteudo += "<td>"+item.nome+"</td>";
                             conteudo += "<td>"+item.email+"</td>";
+                            
+                            conteudo += `<td>
+                                <button data-id="${item.id}" class="editar btn btn-primary">Editar</button>
+                                <button data-id="${item.id}" class="excluir btn btn-danger">Excluir</button>
+                            </td>`;
                             conteudo += "</tr>";
+
                             table_tbody.append(conteudo);
+                        });
+
+                      
+                        $(".editar").click(function(event){
+                            // $(event.target)
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/usuarios/${id}`,
+                                type: "GET",
+                                success: function(resultado) {
+                                    
+                                    let id = $("#id");
+                                    let nome = $("#nome");
+                                    let email = $("#email");
+                                    let senha = $("#senha");
+                                    
+                                    id.val(resultado.id);
+                                    nome.val(resultado.nome);
+                                    email.val(resultado.email);
+                                    senha.val(resultado.senha);
+                                }
+                            });
+                            
+                        });
+
+                        $(".excluir").click(function(event){
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/usuarios/${id}`,
+                                type: "DELETE",
+                                success: function(resultado) {
+                                   alert("Usuário Excluído com Sucesso");
+                                   listarUsuarios();
+                                }
+                            });
+                            
                         });
                     }
                });
             }
 
             listarUsuarios();
-
+            
+            
             $("#form_usuario").submit(function(event){
                 event.preventDefault();
 
+                let id = $("#id");
                 let nome = $("#nome");
                 let email = $("#email");
                 let senha = $("#senha");
 
-                $.ajax({
-                    url: "http://localhost:3000/usuarios",
-                    type: 'POST',
+                if(id.val() === ""){
+                    $.ajax({
+                        url: "http://localhost:3000/usuarios",
+                        type: 'POST',
+                        data: {
+                            nome: nome.val(),
+                            email: email.val(),
+                            senha: senha.val()
+                        },
+                        success: function(resultado){
+                            alert("Usuário Cadastrado com Sucesso.");
+                            nome.val("");
+                            email.val("");
+                            senha.val("");
+                            listarUsuarios();
+                        }
+                    });
+                } else {
+                    $.ajax({
+                    url: "http://localhost:3000/usuarios/"+id.val(),
+                    type: 'PUT',
                     data: {
                         nome: nome.val(),
                         email: email.val(),
                         senha: senha.val()
                     },
                     success: function(resultado){
-                        alert("Usuário Cadastrado com Sucesso.");
+                        alert("Usuário Atualizado com Sucesso.");
+                        id.val("");
                         nome.val("");
                         email.val("");
                         senha.val("");
                         listarUsuarios();
                     }
                 });
+                }
+                
             });
+            
+           
+            
         });
     </script>
 </body>
