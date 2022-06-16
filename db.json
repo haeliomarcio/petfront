@@ -24,5 +24,16 @@
       "senha": "123123123",
       "id": 5
     }
+  ],
+  "clientes":[
+    {
+      "nome":"nome",
+      "email":"email",
+      "whatsapp": "",
+      "CEP":"",
+      "endereço":"",
+      "bairro":"",
+      "pet":""
+    }
   ]
 }
