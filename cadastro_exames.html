@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Exames</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+   
+        <header>
+            <h2>CADASTRO DE EXAMES</h2>
+        </header>
+        <form action="/db.json">
+            <div class="mb-3 mt-3">
+                <label>NOME DO PET:</label>
+                <input type="name" class="form-control" id="nome" placeholder="Nome" name="nome">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="nome_exame" class="form-label">NOME DO EXAME:</label>
+                <input type="text" class="form-control" id="id_exame" placeholder="Nome do Exame" name="name">
+            </div>
+            <div class="mb-3">
+                <label for="comment">OBSERVAÇÃO DE MEDICAÇÃO:</label>
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+
+            </div>
+            
+            <div class="mb-3">
+                <label for="diagnóstico">OBSERVAÇÃO DE DIAGNÓSTICO:</label>
+                <textarea class="form-control" rows="5" id="diagnóstico" name="text"></textarea>
+
+            </div>
+            <div class="mb-3">
+                <label for="observação">OBSERVAÇÕES GERAIS:</label>
+                <textarea class="form-control" rows="3" id="obs" name="text"></textarea>
+
+            </div>           
+                 
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+        <table id="lista_usuarios" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>NOME DO PET</th>
+                    <th>NOME DO EXAME:</th>
+                    <th>OBSERVAÇÃO DE DIAGNÓSTICO:</th>
+                    <th>OBSERVAÇÕES GERAIS:</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+
+   
+    
+    <script>
+
+
+    </script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>    
+</body>
+</html>
