@@ -3,10 +3,11 @@
     {
       "id": 1,
       "nome": "Categoria 01"
+     
     }
   ],
-  "usuarios": [
-    {
+  "cadastro-pet": [
+   
       "id": 1,
       "nome": "teste",
      este@teste.com.br"
@@ -35,6 +36,13 @@
       "cnpj": "4744392939485",
       "endereco": "Rua Feliz",
       "id": 1
-    }
+      "nome": "perola",
+      "tipo": "rafamelo@live.com",
+      "raça": "teste",
+      "cor": "perola",
+      "data_nasc": "rafamelo@live.com",
+      "exampleFormControlTextarea1": "teste",
+      "id": 1  
   ]
 }
+
