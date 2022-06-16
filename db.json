@@ -7,22 +7,10 @@
   ],
   "usuarios": [
     {
-      "id": 1,
-      "nome": "teste",
-      "email": "teste@teste.com.br",
-      "senha": "123456"
-    },
-    {
-      "nome": "teste dasdsa",
-      "email": "teste@teste.com.br",
-      "senha": "123456",
-      "id": 4
-    },
-    {
-      "nome": "Dsadsadas",
-      "email": "teste@teste.com.br",
-      "senha": "123123123",
-      "id": 5
+      "nome": "Saiko",
+      "raça": "Border Colie",
+      "senha": "010101",
+      "id": 2
     }
   ]
 }
