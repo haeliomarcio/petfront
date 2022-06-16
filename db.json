@@ -23,6 +23,20 @@
       "email": "teste@teste.com.br",
       "senha": "123123123",
       "id": 5
+    },
+    {
+      "nome": "ITALO W DE S AMARAL",
+      "email": "linebf@gmail.com",
+      "senha": "aass",
+      "id": 6
+    }
+  ],
+  "istituicoes_doacao": [
+    {
+      "nome": "Abrigo São Lazaro",
+      "cnpj": "4744392939485",
+      "endereco": "Rua Feliz",
+      "id": 1
     }
   ]
 }
