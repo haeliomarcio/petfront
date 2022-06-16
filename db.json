@@ -23,6 +23,18 @@
       "email": "teste@teste.com.br",
       "senha": "123123123",
       "id": 5
+    },
+    {
+      "nome": "Tosa",
+      "id": 6
+    }
+  ],
+  "servicos": [
+    {
+      "nome": "Serviço 01",
+      "preco": "15,50",
+      "descricao": "Banho e Tosa",
+      "id": 1
     }
   ]
 }
