@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
+
 <body class="body">
 
     <h3>Usuários</h3>
@@ -14,15 +16,15 @@
         <input type="hidden" id="id" name="id" value="" />
         <div class="m-3">
             <label class="form-label">Nome</label>
-            <input type="text" name="nome" id="nome" class="form-control"/>
+            <input type="text" name="nome" id="nome" class="form-control" />
         </div>
         <div class="m-3">
             <label class="form-label">E-mail</label>
-            <input type="email" name="email" id="email" class="form-control"/>
+            <input type="email" name="email" id="email" class="form-control" />
         </div>
         <div class="m-3">
             <label class="form-label">Senha</label>
-            <input type="password" name="senha" id="senha" class="form-control"/>
+            <input type="password" name="senha" id="senha" class="form-control" />
         </div>
         <div class="m-3">
             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -39,7 +41,7 @@
             </tr>
         </thead>
         <tbody>
-            
+
         </tbody>
     </table>
 
@@ -47,25 +49,25 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         // function(){
-            
+
         // }
         // $(document).ready();
-        $(document).ready(function(){
-            
+        $(document).ready(function () {
 
-            function listarUsuarios(){
-               $.ajax({
+
+            function listarUsuarios() {
+                $.ajax({
                     url: "http://localhost:3000/usuarios",
                     type: "GET",
-                    success: function(resultado) {
+                    success: function (resultado) {
                         let table_tbody = $("table#lista_usuarios tbody");
                         table_tbody.html("");
-                        resultado.forEach(function(item){
+                        resultado.forEach(function (item) {
                             let conteudo = "<tr>";
-                            conteudo += "<td>"+item.id+"</td>";
-                            conteudo += "<td>"+item.nome+"</td>";
-                            conteudo += "<td>"+item.email+"</td>";
-                            
+                            conteudo += "<td>" + item.id + "</td>";
+                            conteudo += "<td>" + item.nome + "</td>";
+                            conteudo += "<td>" + item.email + "</td>";
+
                             conteudo += `<td>
                                 <button data-id="${item.id}" class="editar btn btn-primary">Editar</button>
                                 <button data-id="${item.id}" class="excluir btn btn-danger">Excluir</button>
@@ -75,49 +77,49 @@
                             table_tbody.append(conteudo);
                         });
 
-                      
-                        $(".editar").click(function(event){
+
+                        $(".editar").click(function (event) {
                             // $(event.target)
                             let id = $(event.target).attr("data-id");
                             $.ajax({
                                 url: `http://localhost:3000/usuarios/${id}`,
                                 type: "GET",
-                                success: function(resultado) {
-                                    
+                                success: function (resultado) {
+
                                     let id = $("#id");
                                     let nome = $("#nome");
                                     let email = $("#email");
                                     let senha = $("#senha");
-                                    
+
                                     id.val(resultado.id);
                                     nome.val(resultado.nome);
                                     email.val(resultado.email);
                                     senha.val(resultado.senha);
                                 }
                             });
-                            
+
                         });
 
-                        $(".excluir").click(function(event){
+                        $(".excluir").click(function (event) {
                             let id = $(event.target).attr("data-id");
                             $.ajax({
                                 url: `http://localhost:3000/usuarios/${id}`,
                                 type: "DELETE",
-                                success: function(resultado) {
-                                   alert("Usuário Excluído com Sucesso");
-                                   listarUsuarios();
+                                success: function (resultado) {
+                                    alert("Usuário Excluído com Sucesso");
+                                    listarUsuarios();
                                 }
                             });
-                            
+
                         });
                     }
-               });
+                });
             }
 
             listarUsuarios();
-            
-            
-            $("#form_usuario").submit(function(event){
+
+
+            $("#form_usuario").submit(function (event) {
                 event.preventDefault();
 
                 let id = $("#id");
@@ -125,7 +127,7 @@
                 let email = $("#email");
                 let senha = $("#senha");
 
-                if(id.val() === ""){
+                if (id.val() === "") {
                     $.ajax({
                         url: "http://localhost:3000/usuarios",
                         type: 'POST',
@@ -134,7 +136,7 @@
                             email: email.val(),
                             senha: senha.val()
                         },
-                        success: function(resultado){
+                        success: function (resultado) {
                             alert("Usuário Cadastrado com Sucesso.");
                             nome.val("");
                             email.val("");
@@ -144,29 +146,30 @@
                     });
                 } else {
                     $.ajax({
-                    url: "http://localhost:3000/usuarios/"+id.val(),
-                    type: 'PUT',
-                    data: {
-                        nome: nome.val(),
-                        email: email.val(),
-                        senha: senha.val()
-                    },
-                    success: function(resultado){
-                        alert("Usuário Atualizado com Sucesso.");
-                        id.val("");
-                        nome.val("");
-                        email.val("");
-                        senha.val("");
-                        listarUsuarios();
-                    }
-                });
+                        url: "http://localhost:3000/usuarios/" + id.val(),
+                        type: 'PUT',
+                        data: {
+                            nome: nome.val(),
+                            email: email.val(),
+                            senha: senha.val()
+                        },
+                        success: function (resultado) {
+                            alert("Usuário Atualizado com Sucesso.");
+                            id.val("");
+                            nome.val("");
+                            email.val("");
+                            senha.val("");
+                            listarUsuarios();
+                        }
+                    });
                 }
-                
+
             });
-            
-           
-            
+
+
+
         });
     </script>
 </body>
+
 </html>
