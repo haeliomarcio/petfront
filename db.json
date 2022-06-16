@@ -7,10 +7,10 @@
   ],
   "usuarios": [
     {
-      "id": 1,
       "nome": "teste",
       "email": "teste@teste.com.br",
-      "senha": "123456"
+      "senha": "123456",
+      "id": 1
     },
     {
       "nome": "teste dasdsa",
@@ -23,6 +23,23 @@
       "email": "teste@teste.com.br",
       "senha": "123123123",
       "id": 5
+    },
+    {
+      "nome": "jose",
+      "email": "",
+      "senha": "456",
+      "id": 6
+    }
+  ],
+  "colaborador": [
+    {
+      "nome": "thiago",
+      "cpf": "123456789",
+      "rg": "987654321",
+      "telefone": "85 9999-9999",
+      "cep": "60000-000",
+      "endereco": "Rua",
+      "id": 1
     }
   ]
 }
