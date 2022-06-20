@@ -56,6 +56,17 @@
       "exampleFormControlTextarea1": "teste",
       "id": 1
     }
+  ],
+  "clientes":[
+    {
+      "nome":"nome",
+      "email":"email",
+      "whatsapp": "",
+      "CEP":"",
+      "endereço":"",
+      "bairro":"",
+      "pet":""
+    }
   ]
 }
 
