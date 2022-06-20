@@ -1,79 +1,9 @@
 {
-  "categorias": [
-    {
-      "id": 1,
-      "nome": "Categoria 01"
-     
-    }
-  ],
+  "categorias": [],
   "usuarios": [],
-  "cadastro-pet": [
-   {
-      "nome": "teste dasdsa",
-      "email": "teste@teste.com.br",
-      "senha": "123456",
-      "id": 4
-    },
-  {
-      "id": 1,
-      "nome": "teste",
-      "email": "teste@teste.com.br",
-      "senha": "123456"
-    },
-    {
-      "nome": "teste dasdsa",
-      "email": "teste@teste.com.br",
-      "senha": "123456",
-      "id": 4
-    },
-    {
-      "nome": "Dsadsadas",
-      "email": "teste@teste.com.br",
-      "senha": "123123123",
-      "id": 5
-    },
-  ],
-  "servicos": [
-    {
-      "nome": "Serviço 01",
-      "preco": "15,50",
-      "descricao": "Banho e Tosa",
-      "id": 1
-
-    }
-  ],
-  "istituicoes_doacao": [
-    {
-      "nome": "Abrigo São Lazaro",
-      "cnpj": "4744392939485",
-      "endereco": "Rua Feliz",
-      "id": 1
-      "nome": "perola",
-      "tipo": "rafamelo@live.com",
-      "raça": "teste",
-      "cor": "perola",
-      "data_nasc": "rafamelo@live.com",
-      "exampleFormControlTextarea1": "teste",
-      "id": 1
-    }
-  ],
-  "clientes":[
-    {
-      "nome":"nome",
-      "email":"email",
-      "whatsapp": "",
-      "CEP":"",
-      "endereço":"",
-      "bairro":"",
-      "pet":""
-    }
-  ]
-  "cadastro_exames":[
-    {
-      "nome_pet": "",
-      "nome_exame": "",
-      "observações 
-      "
-    }
-  ]
+  "cadastro-pet":[],
+  "servicos": [],
+  "istituicoes_doacao": [],
+  "clientes":[],
+  "cadastro_exames":[],
 }
