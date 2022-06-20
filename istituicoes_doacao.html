@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Instituições Para Doação</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body class="body">
+
+    <h3>Cadastre sua Instituição</h3>
+    <form id="form_istituicoes_doacao">
+        <input type="hidden" id="id" name="id" value="" />
+        <div class="m-3">
+            <label class="form-label">Nome da Instituição</label>
+            <input type="text" name="nome" id="nome" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <label class="form-label">CNPJ</label>
+            <input type="text" name="cnpj" id="cnpj" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <label class="form-label">Endereço</label>
+            <input type="text" name="Endereco" id="endereco" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+
+    <table id="lista_istituicoes_doacao" class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        // function(){
+            
+        // }
+        // $(document).ready();
+        $(document).ready(function(){
+            
+
+            function listaristituicoes_doacao(){
+               $.ajax({
+                    url: "http://localhost:3000/istituicoes_doacao",
+                    type: "GET",
+                    success: function(resultado) {
+                        let table_tbody = $("table#lista_istituicoes_doacao tbody");
+                        table_tbody.html("");
+                        resultado.forEach(function(item){
+                            let conteudo = "<tr>";
+                            conteudo += "<td>"+item.id+"</td>";
+                            conteudo += "<td>"+item.nome+"</td>";
+                            conteudo += "<td>"+item.cnpj+"</td>";
+                            conteudo += "<td>"+item.endereco+"</td>";
+                            
+                            conteudo += `<td>
+                                <button data-id="${item.id}" class="editar btn btn-primary">Editar</button>
+                                <button data-id="${item.id}" class="excluir btn btn-danger">Excluir</button>
+                            </td>`;
+                            conteudo += "</tr>";
+
+                            table_tbody.append(conteudo);
+                        });
+
+                      
+                        $(".editar").click(function(event){
+                            // $(event.target)
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/istituicoes_doacao/${id}`,
+                                type: "GET",
+                                success: function(resultado) {
+                                    
+                                    let id = $("#id");
+                                    let nome = $("#nome");
+                                    let cnpj = $("#cnpj");
+                                    let endereco = $("#endereco");
+                                    
+                                    id.val(resultado.id);
+                                    nome.val(resultado.nome);
+                                    cnpj.val(resultado.cnpj);
+                                    endereco.val(resultado.endereco);
+                                }
+                            });
+                            
+                        });
+
+                        $(".excluir").click(function(event){
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/istituicoes_doacao/${id}`,
+                                type: "DELETE",
+                                success: function(resultado) {
+                                   alert("Usuário Excluído com Sucesso");
+                                   listaristituicoes_doacao();
+                                }
+                            });
+                            
+                        });
+                    }
+               });
+            }
+
+            listaristituicoes_doacao();
+            
+            
+            $("#form_istituicoes_doacao").submit(function(event){
+                event.preventDefault();
+
+                let id = $("#id");
+                let nome = $("#nome");
+                let cnpj = $("#cnpj");
+                let endereco = $("#endereco");
+
+                if(id.val() === ""){
+                    $.ajax({
+                        url: "http://localhost:3000/istituicoes_doacao",
+                        type: 'POST',
+                        data: {
+                            nome: nome.val(),
+                            cnpj: cnpj.val(),
+                            endereco: endereco.val()
+                        },
+                        success: function(resultado){
+                            alert("Usuário Cadastrado com Sucesso.");
+                            nome.val("");
+                            cnpj.val("");
+                            endereco.val("");
+                            listaristituicoes_doacao();
+                        }
+                    });
+                } else {
+                    $.ajax({
+                    url: "http://localhost:3000/istituicoes_doacao/"+id.val(),
+                    type: 'PUT',
+                    data: {
+                        nome: nome.val(),
+                        cnpj: cnpj.val(),
+                        endereco: endereco.val()
+                    },
+                    success: function(resultado){
+                        alert("Usuário Atualizado com Sucesso.");
+                        id.val("");
+                        nome.val("");
+                        cnpj.val("");
+                        endereco.val("");
+                        listaristituicoes_doacao();
+                    }
+                });
+                }
+                
+            });
+            
+           
+            
+        });
+    </script>
+</body>
+</html>
