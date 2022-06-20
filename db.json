@@ -1,4 +1,15 @@
 {
+  "colaborador": [
+    {
+      "nome": "thiago",
+      "cpf": "123456789",
+      "rg": "987654321",
+      "telefone": "85 9999-9999",
+      "cep": "60000-000",
+      "endereco": "Rua",
+      "id": 1
+    }
+  ],
   "categorias": [],
   "usuarios": [],
   "cadastro-pet":[],
@@ -7,3 +18,4 @@
   "clientes":[],
   "cadastro_exames":[],
 }
+
