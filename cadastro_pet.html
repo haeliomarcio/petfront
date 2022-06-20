@@ -1,0 +1,370 @@
+<!-- CADASTRO DE PETS PARA ADOÇÃO
+NOME, RAÇA, COR, TIPO DE PET, DATA DE NASCIMENTO, UPLOAD DE IMAGEM.
+OBSERVAÇÃO, PEDIGREE -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de PETS</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body class="body">
+
+    <h3>Cadastro de PETS</h3>
+    <form id="form_pets">
+        <input type="hidden" id="id" name="id" value="" />
+        <div class="m-3">
+            <label class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <label class="form-label">Raça</label>
+            <input type="raça" name="raça" id="raça" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <label class="form-label">Tipo de PET</label>
+            <input type="text" name="nome" id="nome" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <label class="form-label">Data de Nascimento</label>
+            <input type="text" name="nome" id="nome" class="form-control"/>
+        </div>
+        <div class="m-3">
+            <label class="form-label">Senha</label>
+            <input type="password" name="senha" id="senha" class="form-control"/>
+        </div
+    <title>Cadastro de Pet</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body class="body">
+
+    <h1>Cadastro de Pet</h1>
+    <form id="form_usuario">
+        <input type="hidden" id="id" name="id" value="" />
+        <div class="m-3">
+            <label class="form-label">Nome do Pet</label>
+            <input type="text" name="Pet" id="nome" class="form-control" placeholder="Coloque o Nome do Pet" />
+        </div>
+        <select class="m-3" class="form-select" aria-label="Default select example" id="tipo">
+            <option selected>Tipo de Pet</option>
+            <option value="1">Cachorro</option>
+            <option value="2">Gato</option>
+            <option value="3">Outros</option>
+        </select>
+        <div class="m-3">
+            <label class="form-label">Raça</label>
+            <input type="text" name="raça" id="raça" class="form-control" placeholder="Qual a raça do seu pet" />
+        </div>
+        <div class="m-3">
+            <label class="form-label">Cor</label>
+            <input type="text" name="Cor" id="Cor" class="form-control" placeholder="Qual a raça do seu pet" />
+        </div>
+        <div class="m-3">
+            <label class="form-label">Data de Nascimento</label>
+            <input type="date" name="data_nasc" id="data_nasc" class="form-control" />
+        </div>
+        <div class="m-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Observação:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </form>
+    <form>
+        <div class="m-3">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+
+
+    <table id="lista_pets" class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Raça</th>
+                <th>Cor</th>
+                <th>Tipo de Pet</th>
+                <th>Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        // function(){
+            
+        // }
+        // $(document).ready();
+        $(document).ready(function(){
+            
+
+            function listarPets(){
+               $.ajax({
+                    url: "http://localhost:3000/usuarios",
+                    type: "GET",
+                    success: function(resultado) {
+                        let table_tbody = $("table#lista_pets tbody");
+                        table_tbody.html("");
+                        resultado.forEach(function(item){
+                            let conteudo = "<tr>";
+                            conteudo += "<td>"+item.id+"</td>";
+                            conteudo += "<td>"+item.nome+"</td>";
+                            conteudo += "<td>"+item.raça+"</td>";
+                            conteudo += "<td>"+item.cor+"</td>";
+                            conteudo += "<td>"+item.tipo_de_pet+"</td>";
+                            conteudo += "<td>"+item.data_de_nascimento+"</td>";
+
+                            conteudo += `<td>
+                                <button data-id="${item.id}" class="editar btn btn-primary">Editar</button>
+                                <button data-id="${item.id}" class="excluir btn btn-danger">Excluir</button>
+                            </td>`;
+    <table id="lista_cadastro" class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Pet</th>
+                <th>Tipo do Pet</th>
+                <th>Raça</th>
+                <th>Cor</th>
+                <th>Data de Nascimento</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            function lista_cadastro() {
+                $.ajax({
+                    url: "http://localhost:3000/cadastro_pet",
+                    type: "GET",
+                    success: function (resultado) {
+                        let table_tbody = $("table#lista_cadastro tbody");
+                        table_tbody.html("");
+                        resultado.forEach(function (item) {
+                            let conteudo = "<tr>";
+                            conteudo += "<td>" + item.id + "</td>";
+                            conteudo += "<td>" + item.nome + "</td>";
+                            conteudo += "<td>" + item.tipo + "</td>";
+                            conteudo += "<td>" + item.raça + "</td>";
+                            conteudo += "<td>" + item.cor + "</td>";
+                            conteudo += "<td>" + item.data_nasc + "</td>";
+                            conteudo += "<td>" + item.exampleFormControlTextarea1 + "</td>";
+
+
+                            conteudo += `<td>
+                    <button data-id="${item.id}" class="editar btn btn-primary">Editar</button>
+                    <button data-id="${item.id}" class="excluir btn btn-danger">Excluir</button>
+                </td>`;
+                            conteudo += "</tr>";
+
+                            table_tbody.append(conteudo);
+                        });
+                      
+                        $(".editar").click(function(event){
+                            // $(event.target)
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/usuarios/${id}`,
+                                type: "GET",
+                                success: function(resultado) {
+                                    
+                                    let id = $("#id");
+                                    let nome = $("#nome");
+                                    let raça = $("#raça");
+                                    let cor = $("#cor");
+                                    let tipo_de_pet = $("#tipo_de_pet");
+                                    let data_de_nascimento = $("#data_de_nascimento");
+                                    let senha = $("#senha");
+                                    
+                                    id.val(resultado.id);
+                                    nome.val(resultado.nome);
+                                    raça.val(resultado.raça);
+                                    cor.val(resultado.cor);
+                                    tipo_de_pet.val(resultado.tipo_de_pet);
+                                    data_de_nascimento.val(resultado.data_de_nascimento);
+                                    senha.val(resultado.senha);
+                                }
+                            });
+                            
+                        });
+
+                        $(".excluir").click(function(event){
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/usuarios/${id}`,
+                                type: "DELETE",
+                                success: function(resultado) {
+                                   alert("PET Excluído com Sucesso");
+                                   listarPets();
+                                }
+                            });
+                            
+                        });
+                    }
+               });
+            }
+
+            listarPets();
+            
+            
+            $("#form_pets").submit(function(event){
+
+
+                        $(".editar").click(function (event) {
+                            // $(event.target)
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/cadastro_pet/${id}`,
+                                type: "GET",
+                                success: function (resultado) {
+
+                                    let id = $("#id");
+                                    let nome = $("#nome");
+                                    let tipo = $("#tipo");
+                                    let raça = $("#raça");
+                                    let cor = $("#cor");
+                                    let data_nasc = $("#data_nasc");
+                                    let exampleFormControlTextarea1 = $("#exampleFormControlTextarea1");
+
+
+                                    id.val(resultado.id);
+                                    nome.val(resultado.nome);
+                                    tipo.val(resultado.tipo);
+                                    raça.val(resultado.raça);
+                                    cor.val(resultado.cor);
+                                    data_nasc.val(resultado.data_nasc);
+                                    exampleFormControlTextarea1.val(resultado.exampleFormControlTextarea1);
+
+                                }
+                            });
+
+                        });
+
+                        $(".excluir").click(function (event) {
+                            let id = $(event.target).attr("data-id");
+                            $.ajax({
+                                url: `http://localhost:3000/cadastro_pet/${id}`,
+                                type: "DELETE",
+                                success: function (resultado) {
+                                    alert("Usuário Excluído com Sucesso");
+                                    lista_cadastro();
+                                }
+                            });
+
+                        });
+                    }
+                });
+            }
+
+            lista_cadastro();
+
+
+            $("#form_usuario").submit(function (event) {
+                event.preventDefault();
+
+                let id = $("#id");
+                let nome = $("#nome");
+                let raça = $("#raça");
+                let cor = $("#cor");
+                let tipo_de_pet = $("#tipo_de_pet");
+                let data_de_nascimento = $("#data_de_nascimento");
+                let senha = $("#senha");
+
+                if(id.val() === ""){
+                    $.ajax({
+                        url: "http://localhost:3000/usuarios",
+                        type: 'POST',
+                        data: {
+                            nome: nome.val(),
+                            raça: raça.val(),
+                            cor: cor.val(),
+                            tipo_de_pet: tipo_de_pet.val(),
+                            data_de_nascimento: data_de_nascimento.val(),
+                            senha: senha.val()
+                        },
+                        success: function(resultado){
+                            alert("PET Cadastrado com Sucesso.");
+                            nome.val("");
+                            raça.val("");
+                            cor.val("");
+                            tipo_de_pet.val("");
+                            data_de_nascimento.val("");
+                            listarPets();
+                let tipo = $("#tipo");
+                let raça = $("#raça");
+                let cor = $("#cor");
+                let data_nasc = $("#data_nasc");
+                let exampleFormControlTextarea1 = $("#exampleFormControlTextarea1");
+
+
+                if (id.val() === "") {
+                    $.ajax({
+                        url: "http://localhost:3000/cadastro_pet",
+                        type: 'POST',
+                        data: {
+                            nome: nome.val(),
+                            tipo: tipo.val(),
+                            raça: raça.val(),
+                            cor: cor.val(),
+                            data_nasc: data_nasc.val(),
+                            exampleFormControlTextarea1: exampleFormControlTextarea1.val()
+                        },
+                        success: function (resultado) {
+                            alert("Usuário Cadastrado com Sucesso.");
+                            nome.val("");
+                            tipo.val("");
+                            raça.val("");
+                            cor.val("");
+                            data_nasc.val("");
+                            exampleFormControlTextarea1.val("");
+                            lista_cadastro();
+                        }
+                    });
+                } else {
+                    $.ajax({
+                    url: "http://localhost:3000/usuarios/"+id.val(),
+                    type: 'PUT',
+                    data: {
+                            nome: nome.val(),
+                            raça: raça.val(),
+                            cor: cor.val(),
+                            tipo_de_pet: tipo_de_pet.val(),
+                            data_de_nascimento: data_de_nascimento.val(),
+                            senha: senha.val()
+                    },
+                    success: function(resultado){
+                        alert("PET Cadastrado com Sucesso.");
+                            nome.val("");
+                            raça.val("");
+                            cor.val("");
+                            tipo_de_pet.val("");
+                            data_de_nascimento.val("");
+                            listarPets();
+                    }
+                });
+                }
+                
+            });
+            
+           
+            
+        });
+    </script>
+</body>
