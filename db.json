@@ -7,7 +7,13 @@
     }
   ],
   "cadastro-pet": [
-    {
+   {
+      "nome": "teste dasdsa",
+      "email": "teste@teste.com.br",
+      "senha": "123456",
+      "id": 4
+    },
+  {
       "id": 1,
       "nome": "teste",
       "email": "teste@teste.com.br",
@@ -25,10 +31,6 @@
       "senha": "123123123",
       "id": 5
     },
-    {
-      "nome": "Tosa",
-      "id": 6
-    }
   ],
   "servicos": [
     {
@@ -37,6 +39,21 @@
       "descricao": "Banho e Tosa",
       "id": 1
 
+    }
+  ],
+  "istituicoes_doacao": [
+    {
+      "nome": "Abrigo São Lazaro",
+      "cnpj": "4744392939485",
+      "endereco": "Rua Feliz",
+      "id": 1
+      "nome": "perola",
+      "tipo": "rafamelo@live.com",
+      "raça": "teste",
+      "cor": "perola",
+      "data_nasc": "rafamelo@live.com",
+      "exampleFormControlTextarea1": "teste",
+      "id": 1
     }
   ]
 }
