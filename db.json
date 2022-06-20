@@ -7,10 +7,18 @@
     }
   ],
   "cadastro-pet": [
-   
+   {
+      "nome": "teste dasdsa",
+      "email": "teste@teste.com.br",
+      "senha": "123456",
+      "id": 4
+    },
+  {
       "id": 1,
       "nome": "teste",
-     este@teste.com.br"
+      "email": "teste@teste.com.br",
+      "senha": "123456"
+    },
     {
       "nome": "teste dasdsa",
       "email": "teste@teste.com.br",
@@ -23,11 +31,14 @@
       "senha": "123123123",
       "id": 5
     },
+  ],
+  "servicos": [
     {
-      "nome": "ITALO W DE S AMARAL",
-      "email": "linebf@gmail.com",
-      "senha": "aass",
-      "id": 6
+      "nome": "Serviço 01",
+      "preco": "15,50",
+      "descricao": "Banho e Tosa",
+      "id": 1
+
     }
   ],
   "istituicoes_doacao": [
@@ -42,7 +53,8 @@
       "cor": "perola",
       "data_nasc": "rafamelo@live.com",
       "exampleFormControlTextarea1": "teste",
-      "id": 1  
+      "id": 1
+    }
   ]
 }
 
