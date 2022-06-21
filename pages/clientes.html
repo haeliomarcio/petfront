@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>clientes</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/load.js"></script>
     <style>
         header{
             margin: 0;
@@ -27,67 +29,96 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Cadastro de clientes</h1>
-    </header>
-    <main class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <form class="form_cliente">
-                    <div>
-                        <label>Name:</label>
-                        <input type="text" name="nome" id="nome" class="form-control" placeholder="nome">
-                    </div>
-                    
-                    <div>
-                        <label>E-mail:</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="@email">
-                    </div>
-                    <div>
-                        <label>whatSapp:</label>
-                        <input type="text" name="whatsapp" id="email" class="form-control" placeholder="whatsapp">
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6">
-                            <label>CEP:</label>
-                            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP">
+    <div class="container">
+        <header>
+            <h1>Cadastro de clientes</h1>
+        </header>
+        <nav>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="categorias.html" class="nav-link" href="#">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a href="colaboradorr.html" class="nav-link" href="#">Colaborador</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cadastro_pet.html" class="nav-link" href="#">Pets</a>
+                </li>
+                <li class="nav-item">
+                <a  href="clientes.html" class="nav-link active">Clientes</a>
+                </li>
+                <li class="nav-item">
+                <a href="" class="nav-link">Adoções</a>
+                </li>
+                <li class="nav-item">
+                    <a href="usuarios.html" class="nav-link">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="logout()" class="nav-link">Sair</a>
+                </li>
+            </ul>
+        </nav>
+        <main class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form class="form_cliente">
+                        <div>
+                            <label>Name:</label>
+                            <input type="text" name="nome" id="nome" class="form-control" placeholder="nome">
                         </div>
-                        <div class="col-md-6">
-                            <label>Bairro:</label>
-                            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="bairro">
+                        
+                        <div>
+                            <label>E-mail:</label>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="@email">
                         </div>
-                    </div>
-                    <div>
-                        <label>Pet:</label>
-                        <input type="text" name="pet" id="pet" class="form-control" placeholder="nome do animal">
-                    </div>
-                    <div class= "d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" class="btn btn-outline-primary">Salvar</button>
-                    </div>
-                </form>
-            </div>   
-        </div>
-    </main>
-    <table id="lista_usuarios" class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>whatSapp</th>
-                <th>CEP</th>
-                <th>Bairro</th>
-                <th>Pet</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+                        <div>
+                            <label>whatSapp:</label>
+                            <input type="text" name="whatsapp" id="email" class="form-control" placeholder="whatsapp">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>CEP:</label>
+                                <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Bairro:</label>
+                                <input type="text" name="bairro" id="bairro" class="form-control" placeholder="bairro">
+                            </div>
+                        </div>
+                        <div>
+                            <label>Pet:</label>
+                            <input type="text" name="pet" id="pet" class="form-control" placeholder="nome do animal">
+                        </div>
+                        <div class= "d-grid gap-2 col-6 mx-auto">
+                            <button type="submit" class="btn btn-outline-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>   
+            </div>
+        </main>
+        <table id="lista_usuarios" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>whatSapp</th>
+                    <th>CEP</th>
+                    <th>Bairro</th>
+                    <th>Pet</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         $(document).submit(() =>{
             event.defaultPrevented()

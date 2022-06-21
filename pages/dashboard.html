@@ -5,22 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Petfront</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/load.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/load.js"></script>
 </head>
 <body>
-    
+    <div class="container">
     <h1>Dashboard</h1>
-    <nav>
-        <ul>
-            <li>
-                <a href="dashboard.html">Dashboard</a>
-            </li>
-            <li>
-                <a href="categorias.html">Categorias</a>
-            </li>
-        </ul>
-    </nav>
-    <script src="js/scripts.js"></script>
+        <nav>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="categorias.html" class="nav-link" href="#">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a href="colaboradorr.html" class="nav-link" href="#">Colaborador</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cadastro_pet.html" class="nav-link" href="#">Pets</a>
+                </li>
+                <li class="nav-item">
+                <a  href="clientes.html" class="nav-link">Clientes</a>
+                </li>
+                <li class="nav-item">
+                <a href="" class="nav-link">Adoções</a>
+                </li>
+                <li class="nav-item">
+                    <a href="usuarios.html" class="nav-link">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="logout()" class="nav-link">Sair</a>
+                </li>
+            </ul>
+        </nav>
+        <hr />
+    </div>
+    <script src="../js/scripts.js"></script>
 </body>
 </html>

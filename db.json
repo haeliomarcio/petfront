@@ -11,11 +11,22 @@
     }
   ],
   "categorias": [],
-  "usuarios": [],
-  "cadastro-pet":[],
+  "usuarios": [
+    {
+      "id": 1,
+      "email": "teste@teste.com.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Admin",
+      "email": "admin@admin.com",
+      "senha": "admin",
+      "id": 2
+    }
+  ],
+  "cadastro-pet": [],
   "servicos": [],
   "istituicoes_doacao": [],
-  "clientes":[],
-  "cadastro_exames":[],
+  "clientes": [],
+  "cadastro_exames": []
 }
-

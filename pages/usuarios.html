@@ -6,12 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/load.js"></script>
 </head>
 
 <body class="body">
 
     <h3>Usuários</h3>
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="categorias.html" class="nav-link" href="#">Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a href="colaboradorr.html" class="nav-link" href="#">Colaborador</a>
+            </li>
+            <li class="nav-item">
+                <a href="cadastro_pet.html" class="nav-link" href="#">Pets</a>
+            </li>
+            <li class="nav-item">
+            <a  href="clientes.html" class="nav-link active">Clientes</a>
+            </li>
+            <li class="nav-item">
+            <a href="" class="nav-link">Adoções</a>
+            </li>
+            <li class="nav-item">
+                <a href="usuarios.html" class="nav-link">Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()" class="nav-link">Sair</a>
+            </li>
+        </ul>
+    </nav>
     <form id="form_usuario">
         <input type="hidden" id="id" name="id" value="" />
         <div class="m-3">
@@ -45,8 +75,8 @@
         </tbody>
     </table>
 
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         // function(){
 
