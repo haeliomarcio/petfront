@@ -1,0 +1,13 @@
+body{
+    background-color:cyan ;
+}
+
+.justify-content-end {
+    display: flex;
+}
+.justify-content-end li {
+    list-style: none;
+}
+.justify-content-end li {
+    margin: 5px;
+}
