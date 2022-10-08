@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Open+Sans:wght@300&family=Roboto:ital,wght@1,300&family=Silkscreen&display=swap');
+#tamanho{
+    width: 100%;
+    margin: 0 auto;
+}
+.alinhar{
+    font-family: 'Abyssinica SIL', serif; 
+    text-align: center;
+}
+
+@keyframes animacaoImagem {
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: 800px;
+    }
+}
+
+.fundo{
+    background-image: url(https://i.pinimg.com/originals/16/b2/b3/16b2b38d1acedd03c56fbb029fd9cf00.gif);
+    animation: animacaoImagem 5s  infinite;
+}
