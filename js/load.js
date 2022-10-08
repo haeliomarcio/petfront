@@ -3,7 +3,7 @@
 const token = localStorage.getItem("token_petfront");
 
 if(!token) {
-    window.location = "../index.html";
+  // window.location = "../index.html";
 } 
 
 function logout() {
