@@ -7,7 +7,11 @@
     font-family: 'Abyssinica SIL', serif; 
     text-align: center;
 }
-
+#caixa {
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 15px;
+}
 @keyframes animacaoImagem {
     from {
         background-position: 0px;
